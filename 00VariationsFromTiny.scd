@@ -46,7 +46,7 @@ base = nil.asTarget;
 			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
 			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
 		).perform([\perc, \sine]@@n);
-		Out.ar (Rand (22), src * 1.2);
+		Out.ar (Rand (22), src * 0.01);
 	} +> name;
 
 	([0.25.pn(14), 5 ! 3, 1, 2, 0.1 ! 10, 3] / (0.5 + (n / 4))).flat.prand *> name;

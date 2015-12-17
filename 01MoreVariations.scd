@@ -16,18 +16,18 @@
 		 Out.ar(-1 + Rand(22), Blip.arp (
 			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
 			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		 ).perform([\perc, \sine]@@n));
+		 ).perform([\perc, \sine]@@n)) * 0.7;
 		
 	} +> name;
 
-	([0.25.pn(14), 5 ! 3, 1, 2, 0.1 ! 10, 3] / (0.5 + (n / 4))).flat.prand *> name;
+	//	([0.25.pn(14), 5 ! 3, 1, 2, 0.1 ! 10, 3] / (0.5 + (n / 4))).flat.prand *> name;
 } ! 8;
 //:
 TaskPlayer.stopAll;
 ~e.({ | name | 10 *> name} );
 //:
 TaskPlayer.stopAll;
-~e.({ | name | 0.1 *> name} );
+~e.({ | name | 0.1 **> name} );
 //:
 ~e.({ | name, n | n / 10 + 10 **> name} );
 //:
@@ -104,7 +104,7 @@ TaskPlayer.stopAll;
 		Out.ar(Rand(22), Mix(Blip.arp(
 			1 + n * (1..10),
 			Rand (2, 20)
-		).sine) * 0.01);
+		).sine) * 0.5);
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -243,9 +243,9 @@ TaskPlayer.stopAll;
 ~e.({ | name, n |
 	{
 	Out.ar(Rand(22), Mix(Blip.arp(
-			400 rrand: 500 + (n * 20) * (1, 1.01 .. 1.2),
+			10 rrand: 20 + (n * 20) * (1, 1.01 .. 1.2),
 			Rand (2, 5)
-	).sine) * 0.01);
+	).perform(['sine', 'perc'].choose)) * 0.01);
 	} +> name;
 } );
 //:
