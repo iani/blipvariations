@@ -29,7 +29,7 @@ base = nil.asTarget;
 			In.ar (17), // 18
 			In.ar (18), // 19
 			In.ar (19), // 20
-			In.ar (20) // 21
+			In.ar (20), // 21
 			In.ar (21) // 22
 		]
 	)
