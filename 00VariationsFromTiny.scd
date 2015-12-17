@@ -1,39 +1,4 @@
 //:
-{ | n |
-	var name;
-	name = format("multi%", n).asSymbol;
-	n = n % 4;
-	{
-		Blip.arps(
-			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
-			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		).perform([\perc, \sine]@@n)
-	} +> name;
-
-	([0.25.pn(14), 5 ! 3, 1, 2, 0.1 ! 10, 3] / (0.5 + (n / 4))).flat.prand *> name;
-} ! 8;
-
-//:
-{ | n |
-	var name;
-	name = format("multi%", n).asSymbol;
-	n = n % 4;
-	{
-		var src;
-		src = Blip.arp(
-			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
-			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		).perform([\perc, \sine]@@n);
-		Out.ar (Rand (22), src);
-	} +> name;
-
-	([0.25.pn(14), 5 ! 3, 1, 2, 0.1 ! 10, 3] / (0.5 + (n / 4))).flat.prand *> name;
-} ! 8;
-
-//:
-/*
-
-*/
 var base;
 base = nil.asTarget;
 {
@@ -69,6 +34,24 @@ base = nil.asTarget;
 		]
 	)
 }.play (base)
+
+//:
+{ | n |
+	var name;
+	name = format("multi%", n).asSymbol;
+	n = n % 4;
+	{
+		var src;
+		src = Blip.arp(
+			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
+			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
+		).perform([\perc, \sine]@@n);
+		Out.ar (Rand (22), src * 1.2);
+	} +> name;
+
+	([0.25.pn(14), 5 ! 3, 1, 2, 0.1 ! 10, 3] / (0.5 + (n / 4))).flat.prand *> name;
+} ! 8;
+
 //: Ah stereo
 { | i | 
 	[-1.0, 1.0].pwhite +>.pos format("multi%", i).asSymbol;

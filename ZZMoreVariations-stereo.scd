@@ -13,10 +13,10 @@
 	name = format("multi%", n).asSymbol;
 	n = n % 4;
 	{
-		 Out.ar(-1 + Rand(22), Blip.arp (
+		 Blip.arps (
 			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
 			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		 ).perform([\perc, \sine]@@n));
+		).perform([\perc, \sine]@@n);
 		
 	} +> name;
 
@@ -24,10 +24,10 @@
 } ! 8;
 //:
 TaskPlayer.stopAll;
-~e.({ | name | 10 *> name} );
+~e.({ | name | 10 **> name} );
 //:
 TaskPlayer.stopAll;
-~e.({ | name | 0.1 *> name} );
+~e.({ | name | 10 *> name} );
 //:
 ~e.({ | name, n | n / 10 + 10 **> name} );
 //:
@@ -38,87 +38,73 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(-1 + Rand(22), Blip.arp(
+		Blip.arps(
 			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
 			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		).sine * 0.1);
+		).sine * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Blip.arp(
+		Blip.arps(
 			1 + n / 2 * Line.kr(Rand(20, 80).midicps, Rand(20, 80).midicps, Rand(0.1, 1)),
 			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		).perc * 0.1);
+		).perc * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Blip.arp(
+		Blip.arps(
 			1 + n / 2 * Rand (20, 80).midicps,
 			Line.kr(Rand(5, 25), Rand(5, 25), 0.5)
-		).perc * 0.1);
+		).perc * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Blip.arp(
+		Blip.arps(
 			1 + n / 2 * Rand (20, 80).midicps,
 			Rand (2, 20)
-		).perc * 0.1);
+		).perc * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Blip.arp(
+		Blip.arps(
 			1 + n / 2 * Rand (20, 80).midicps,
 			Rand (2, 20)
-		).sine * 0.1);
+		).sine * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			(1..10) * Rand (10, 20),
 			Rand (30, 50)
-		).sine) * 0.1);
+		).sine) * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			(1..10) * Rand (10, 20),
 			Rand (30, 50)
-		).sine) * 0.1);
+		).sine) * 0.1;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			1 + n * (1..10),
 			Rand (2, 20)
-		).sine) * 0.01);
-	} +> name;
-} );
-TaskPlayer.stopAll;
-~e.({ | name, n | n / 10 + 10 *> name} );
-
-//////////////////////////////////////////////////////////////////
-
-//:
-~e.({ | name, n |
-	{
-		Out.ar(Rand(22), Mix(Blip.arp(
-			1 + n * (1..10),
-			Rand (2, 20)
-		).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -126,10 +112,21 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
+			1 + n * (1..10),
+			Rand (2, 20)
+		).sine) * 0.01;
+	} +> name;
+} );
+TaskPlayer.stopAll;
+~e.({ | name, n | n / 10 + 10 *> name} );
+//:
+~e.({ | name, n |
+	{
+		Mix (Blip.arps(
 			100 + n * (1..10),
 			Rand (2, 20)
-		).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -137,10 +134,10 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			200 + n * (1..10),
 			Rand (2, 5)
-		).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -148,10 +145,10 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			400 + n * (1..10),
 			Rand (2, 5)
-		).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -159,10 +156,10 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			400 + n * (1, 1.1 .. 2),
 			Rand (2, 5)
-		).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -170,10 +167,10 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			4000 + n * (1, 1.1 .. 2),
 			Rand (2, 5)
-		).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 TaskPlayer.stopAll;
@@ -197,55 +194,55 @@ TaskPlayer.stopAll;
 //:
 ~e.({ | name, n |
 	{
-		Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			4000 + n * (1, 1.1 .. 2),
 			Rand (2, 5)
-		).perc) * 0.01);
+		).perc) * 0.01;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-	Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			4000 + (n * 20) * (1, 1.1 .. 2),
 			Rand (2, 5)
-	).perc) * 0.01);
+		).perc) * 0.01;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-	Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			4000 + (n * 20) * (1, 1.01 .. 1.2),
 			Rand (2, 5)
-	).perc) * 0.01);
+		).perc) * 0.01;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-	Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			4000 + (n * 20) * (1, 1.01 .. 1.2),
 			Rand (2, 5)
-	).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-	Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			400 rrand: 5000 + (n * 20) * (1, 1.01 .. 1.2),
 			Rand (2, 5)
-	).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 //:
 ~e.({ | name, n |
 	{
-	Out.ar(Rand(22), Mix(Blip.arp(
+		Mix (Blip.arps(
 			400 rrand: 500 + (n * 20) * (1, 1.01 .. 1.2),
 			Rand (2, 5)
-	).sine) * 0.01);
+		).sine) * 0.01;
 	} +> name;
 } );
 //:
